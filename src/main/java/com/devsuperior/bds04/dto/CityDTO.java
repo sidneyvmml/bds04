@@ -13,7 +13,7 @@ public class CityDTO implements Serializable {
 	
 	private Long id;
 	
-	@NotNull
+	@NotNull(message = "Campo requerido")
 	@NotBlank(message = "Campo requerido")	
 	private String name;
 	
