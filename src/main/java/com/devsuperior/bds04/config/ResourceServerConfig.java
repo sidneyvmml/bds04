@@ -26,7 +26,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 	
 	private static final String[] OPERATOR_OR_ADMIN = { "/cities/**", "/events/**" };
 	
-	private static final String[] USER_CLIENT_POST = { "/events/**" };
+	private static final String[] OPERATOR_OR_CLIENT = { "/events/**" };
 	
 	private static final String[] ADMIN = { "/cities/**", "/events/**" };
 
@@ -47,7 +47,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 		http.authorizeRequests()
 		.antMatchers(PUBLIC).permitAll()
 		.antMatchers(HttpMethod.GET, OPERATOR_OR_ADMIN).permitAll()
-		.antMatchers(HttpMethod.POST, USER_CLIENT_POST).hasAnyRole("OPERATOR", "CLIENT")
+		.antMatchers(HttpMethod.POST, OPERATOR_OR_CLIENT).hasAnyRole(OPERATOR_OR_CLIENT)
 		.antMatchers(HttpMethod.POST, ADMIN).hasAnyRole("ADMIN")		
 		.anyRequest().hasAnyRole("ADMIN");
 	}	
